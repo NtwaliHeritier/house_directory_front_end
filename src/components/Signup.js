@@ -1,12 +1,31 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 
 const Signup = () => {
+  const [user, setUser] = useState({first_name: "", last_name: "", username: "", password: ""});
+
+const handleChange = (e) => {
+  const newUser = {...user, [e.target.name]: e.target.value};
+  setUser(newUser);
+}
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await axios.post('http://localhost:3001/users', user);
+  alert("User created");
+  }
+  catch(e) {
+    console.log(e);
+  }
+}
+
   return ( 
-    <form>
-      <input type="text" name="first_name"/>
-      <input type="text" name="last_name"/>
-      <input type="text" name="username"/>
-      <input type="text" name="password"/>
+    <form onSubmit = {handleSubmit}>
+      <input type="text" name="first_name"  onChange = {handleChange} value = {user.first_name}/>
+      <input type="text" name="last_name" onChange = {handleChange} value = {user.last_name}/>
+      <input type="text" name="username" onChange = {handleChange} value = {user.username}/>
+      <input type="text" name="password" onChange = {handleChange} value = {user.password}/>
       <button type="submit">Register</button>
     </form>
    );
