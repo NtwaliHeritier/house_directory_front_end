@@ -13,7 +13,13 @@ const Login = () => {
     e.preventDefault();
     try {
       const {data} = await axios.post('http://localhost:3001/login', credentials);
-      console.log(data.token);
+      if(data.error) {
+        alert(data.error)
+      }
+      else {
+        localStorage.setItem("token", data.token);
+        
+      }
       }
       catch(e) {
         console.log(e);
