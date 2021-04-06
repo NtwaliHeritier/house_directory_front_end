@@ -1,11 +1,8 @@
 import axios from 'axios';
 import React, {useState} from 'react';
-import { useHistory } from 'react-router';
 
 const Signup = () => {
   const [user, setUser] = useState({first_name: "", last_name: "", username: "", password: ""});
-
-  const history = useHistory();
   
   const handleChange = (e) => {
     const newUser = {...user, [e.target.name]: e.target.value};
@@ -17,7 +14,7 @@ const Signup = () => {
     try {
     const {data} = await axios.post('http://localhost:3001/users', user);
     localStorage.setItem("token", data.token);
-    history.push("/");
+    window.location = "/";
     }
     catch(e) {
       console.log(e);
