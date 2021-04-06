@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({username: "", password: ""});
+  const history = useHistory();
 
   const handleChange = (e) => {
     const newcredentials = {...credentials, [e.target.name]: e.target.value};
@@ -18,7 +20,7 @@ const Login = () => {
       }
       else {
         localStorage.setItem("token", data.token);
-        
+        history.push("/");
       }
       }
       catch(e) {

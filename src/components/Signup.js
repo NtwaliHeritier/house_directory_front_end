@@ -1,24 +1,28 @@
 import axios from 'axios';
 import React, {useState} from 'react';
+import { useHistory } from 'react-router';
 
 const Signup = () => {
   const [user, setUser] = useState({first_name: "", last_name: "", username: "", password: ""});
 
-const handleChange = (e) => {
-  const newUser = {...user, [e.target.name]: e.target.value};
-  setUser(newUser);
-}
+  const history = useHistory();
+  
+  const handleChange = (e) => {
+    const newUser = {...user, [e.target.name]: e.target.value};
+    setUser(newUser);
+  }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    await axios.post('http://localhost:3001/users', user);
-  alert("User created");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+    const {data} = await axios.post('http://localhost:3001/users', user);
+    localStorage.setItem("token", data.token);
+    history.push("/");
+    }
+    catch(e) {
+      console.log(e);
+    }
   }
-  catch(e) {
-    console.log(e);
-  }
-}
 
   return ( 
     <form onSubmit = {handleSubmit}>
