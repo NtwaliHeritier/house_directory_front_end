@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { login } from '../services/authService';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({username: "", password: ""});
@@ -11,19 +12,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const {data} = await axios.post('http://localhost:3001/login', credentials);
-      if(data.error) {
-        alert(data.error)
-      }
-      else {
-        localStorage.setItem("token", data.token);
-        window.location = "/";
-      }
-      }
-      catch(e) {
-        console.log(e);
-      }
+    await login(credentials);
   }
 
   return ( 

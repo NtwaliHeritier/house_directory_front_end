@@ -8,26 +8,23 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 
 function App() {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     try {
-      const {username} = jwtDecode(localStorage.getItem("token"))
-      setUsername(username);
+      const {user} = jwtDecode(localStorage.getItem("token"))
+      setUser(user);
     }
     catch(e) {}
   }, []);
 
   return (
     <>
-    {username && <Navbar username = {username}/>}
+    {user && <Navbar username = {user.username}/>}
     <Switch>
-      {!username && 
-      <>
       <Route path="/login" component = {Login}/>
       <Route path="/signup" component = {Signup}/>
-      </>}
-      {username && <Route path="/" component={Home}/>}
+      <Route path="/" component={Home}/>
     </Switch>
     </>
   );
