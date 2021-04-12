@@ -1,15 +1,32 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import {getHouses} from '../services/houseService';
 
 const Home = () => {
-  const getUsers = async () => {
-    await axios.get("https://localhost:3001/houses");
+
+  const [houses, setHouses] = useState([]);
+
+  const loadHouses = async () => {
+    const myHouses = await getHouses();
+    setHouses(myHouses);
   }
 
   useEffect(() => {
-  }, [])
+    loadHouses();
+  }, []);
+
   return ( 
-    <div>Home</div>
+    <>
+    <div>Home {houses.length}</div>
+    <div>
+      {houses.map((house) => <div key={house.id}>
+        <div>{house.name}</div>
+        <div>{house.description}</div>
+        <div>{house.price}</div>
+        <div><img src={house.image}/></div>
+      </div>
+      )}
+    </div>
+    </>
    );
 }
  

@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-    {user.id && <Navbar username = {user.username}/>}
+    {user.user_id && <Navbar username = {user.username}/>}
     <Switch>
       <Route path="/login" component = {Login}/>
       <Route path="/signup" component = {Signup}/>
