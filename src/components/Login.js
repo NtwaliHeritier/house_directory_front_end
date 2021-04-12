@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { login } from '../services/authService';
+import '../css/login.css';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({username: "", password: ""});
@@ -16,11 +16,20 @@ const Login = () => {
   }
 
   return ( 
-    <form onSubmit = {handleSubmit}>
-      <input type="text" name="username" onChange = {handleChange} value = {credentials.username}/>
-      <input type="text" name="password" onChange = {handleChange} value = {credentials.password}/>
-      <button type="submit">Login</button>
+    <div className="main-content">
+    <div className="form-login bg-white p-5 w-50">
+    <form className="mb-4" onSubmit = {handleSubmit}>
+      <div className="form-group">
+      <input type="text" className="w-100" id="exampleInputEmail1" name="username" placeholder="Email" onChange = {handleChange} value = {credentials.username}/>
+      </div>
+      <div className="form-group"></div>
+      <input type="text" className="w-100" id="Password1" name="password" placeholder="Password" onChange = {handleChange} value = {credentials.password}/>
+      <div className="form-group"></div>
+      <button type="submit" className="btn-primary text-white d-block w-100">Login</button>
     </form>
+    <a href="#" className="d-block text-center">Sign up</a>
+    </div>
+    </div>
    );
 }
  

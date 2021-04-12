@@ -1,18 +1,17 @@
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
-import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 
 function App() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     try {
-      const {user} = jwtDecode(localStorage.getItem("token"))
+      const user = jwtDecode(localStorage.getItem("token"))
       setUser(user);
     }
     catch(e) {}
@@ -20,7 +19,7 @@ function App() {
 
   return (
     <>
-    {user && <Navbar username = {user.username}/>}
+    {user.id && <Navbar username = {user.username}/>}
     <Switch>
       <Route path="/login" component = {Login}/>
       <Route path="/signup" component = {Signup}/>

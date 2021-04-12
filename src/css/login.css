@@ -1,0 +1,22 @@
+.main-content {
+	min-height: 100vh;
+	background: url('../images/house-login.gif');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+form input {
+	height: 3em;
+	text-indent: 20px;
+	border: 1px solid darkgray;
+}
+
+form button {
+	height: 3em;
+	font-size: large;
+	border: none;
+}
