@@ -6,4 +6,8 @@ const getHouses = async () => {
   return data;
 }
 
-export {getHouses};
+const saveHouse = async (house) => {
+  await http.post(`${apiUrl}/houses`, house);
+}
+
+export {getHouses, saveHouse};

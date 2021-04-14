@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
+import CreateHouse from './components/CreateHouse';
 import Home from './components/Home';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
@@ -23,6 +24,7 @@ function App() {
     <Switch>
       <Route path="/login" component = {Login}/>
       <Route path="/signup" component = {Signup}/>
+      <Route path="/newHouse" component = {CreateHouse} user_id={user.user_id}/>
       <Route path="/" component={Home}/>
     </Switch>
     </>
