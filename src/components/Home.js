@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {getHouses} from '../services/houseService';
+import '../css/house.css';
 
 const Home = () => {
 
@@ -15,18 +16,26 @@ const Home = () => {
   }, []);
 
   return ( 
-    <>
-    <div>Home {houses.length}</div>
-    <div>
-      {houses.map((house) => <div key={house.id}>
-        <div>{house.name}</div>
-        <div>{house.description}</div>
-        <div>{house.price}</div>
-        <div><img src={house.image}/></div>
-      </div>
-      )}
+    <div className="bg-light">
+    <div className="house-containers d-flex">
+      {houses.map(house => 
+        <div key={house.id} className="house-container">
+          <img src={house.image} alt=""/>
+          <div className="img-description d-flex">
+            <div className="ratings d-flex">
+              <span className="font-weight-bold">{house.name}</span>
+              <span><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star-o"></i></span>
+            </div>
+            <div className="house-price d-flex">
+              <span className="font-weight-bold">{house.price}</span>
+              <span>per Month</span>
+            </div>
+          </div>
+          <button>DETAILS</button>
+        </div>
+        )}
     </div>
-    </>
+    </div>
    );
 }
  

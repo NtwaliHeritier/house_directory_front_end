@@ -27,10 +27,10 @@ const Login = () => {
       <input type="password" className="w-100" id="Password1" name="password" placeholder="Password" onChange = {handleChange} value = {credentials.password}/>
       </div>
       <div className="form-group">
-      <button type="submit" className="btn-primary text-white d-block w-100">Login</button>
+      <button type="submit" className="btn-primary text-white d-block w-100">LOGIN</button>
       </div>
     </form>
-    <Link to="/signup" className="d-block text-center">Sign up</Link>
+    <Link to="/signup" className="d-block text-center">SIGN UP</Link>
     </div>
     </div>
    );

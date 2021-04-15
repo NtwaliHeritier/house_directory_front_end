@@ -40,7 +40,7 @@ const Signup = () => {
           <input type="text" name="password" className="w-100" placeholder = "Password" onChange = {handleChange} value = {user.password}/>
         </div>
         <div className="form-group"> 
-          <button type="submit" className="btn-primary text-white d-block w-100">Register</button>
+          <button type="submit" className="btn-primary text-white d-block w-100">REGISTER</button>
         </div>
       </form>
       <Link to="/login" className="d-block text-center">LOGIN</Link>
