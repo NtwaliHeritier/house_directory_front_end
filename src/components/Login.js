@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { login } from '../services/authService';
-import '../css/login.css';
+import '../css/auth.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({username: "", password: ""});
@@ -22,12 +23,14 @@ const Login = () => {
       <div className="form-group">
       <input type="text" className="w-100" id="exampleInputEmail1" name="username" placeholder="Email" onChange = {handleChange} value = {credentials.username}/>
       </div>
-      <div className="form-group"></div>
-      <input type="text" className="w-100" id="Password1" name="password" placeholder="Password" onChange = {handleChange} value = {credentials.password}/>
-      <div className="form-group"></div>
+      <div className="form-group">
+      <input type="password" className="w-100" id="Password1" name="password" placeholder="Password" onChange = {handleChange} value = {credentials.password}/>
+      </div>
+      <div className="form-group">
       <button type="submit" className="btn-primary text-white d-block w-100">Login</button>
+      </div>
     </form>
-    <a href="#" className="d-block text-center">Sign up</a>
+    <Link to="/signup" className="d-block text-center">Sign up</Link>
     </div>
     </div>
    );
